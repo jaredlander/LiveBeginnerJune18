@@ -38,4 +38,21 @@ ggplot(diamonds, aes(x=cut, y=price)) +
     scale_color_gradient('Diamond Size', low='#56B1F7', high='#c91010') + 
     labs(x='Cut', y='Price', title='Price vs Cut and Carat')
 
+library(ggthemes)
 
+p <- ggplot(diamonds, aes(x=carat, y=price, color=cut)) + 
+    geom_point(shape=1, size=1)
+p
+p + labs(title='Price vs carat')
+
+p + theme_economist()
+p + theme_economist() + scale_color_economist()
+
+p + scale_color_tableau()
+
+p + theme_wsj() + scale_color_wsj()
+p + theme_fivethirtyeight() + scale_color_fivethirtyeight()
+p + theme_tufte()
+
+p + theme_excel()
+p + theme_excel() + scale_color_excel()
