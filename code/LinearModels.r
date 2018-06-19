@@ -53,3 +53,16 @@ summary(value3)
 library(coefplot)
 
 coefplot(value3, sort='magnitude')
+coefplot(value3, sort='magnitude', predictors=c('UnitsTotal', 'LotArea'))
+
+value4 <- lm(TotalValue ~ I(LotArea/1000) + I(UnitsTotal/10) + OwnerType, 
+             data=land)
+coefplot(value4, sort='magnitude')
+
+value5 <- lm(TotalValue ~ scale(LotArea) + scale(UnitsTotal) + OwnerType,
+             data=land)
+coefplot(value5, sort='magnitude')
+sd(land$UnitsTotal)
+
+multiplot(value1, value2, value3, sort='magnitude')
+multiplot(value1, value2, value3, sort='magnitude', single=FALSE)
