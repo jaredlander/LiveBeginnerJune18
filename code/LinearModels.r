@@ -66,3 +66,17 @@ sd(land$UnitsTotal)
 
 multiplot(value1, value2, value3, sort='magnitude')
 multiplot(value1, value2, value3, sort='magnitude', single=FALSE)
+
+AIC(value1, value2, value3)
+BIC(value1, value2, value3)
+
+land_test <- readRDS('data/manhattan_Test.rds')
+
+library(dplyr)
+set.seed(1234)
+land_test_small <- land_test %>% sample_n(20)
+land_test_small
+
+landPreds3 <- predict(value3, newdata=land_test_small, 
+                      se.fit=TRUE, interval='prediction')
+head(landPreds3$fit)
