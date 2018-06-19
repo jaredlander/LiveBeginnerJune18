@@ -48,3 +48,10 @@ histPreds1.2 <- predict(historic1, newdata=land_test_small,
                         se.fit=TRUE,
                         type='response')
 histPreds1.2$fit
+
+table(land$NumBldgs)
+
+buildings1 <- glm(NumBldgs ~ LotArea + OwnerType + Landmark,
+                  data=land,
+                  family=poisson)
+coefplot(buildings1, sort='magnitude')
