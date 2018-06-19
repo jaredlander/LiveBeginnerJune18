@@ -36,3 +36,15 @@ library(coefplot)
 class(historic1)
 
 coefplot(historic1, sort='magnitude')
+
+land_test <- readRDS('data/manhattan_Test.rds')
+set.seed(1234)
+land_test_small <- land_test %>% sample_n(20)
+
+histPreds1.1 <- predict(historic1, newdata=land_test_small, se.fit=TRUE)
+histPreds1.1$fit
+
+histPreds1.2 <- predict(historic1, newdata=land_test_small,
+                        se.fit=TRUE,
+                        type='response')
+histPreds1.2$fit
